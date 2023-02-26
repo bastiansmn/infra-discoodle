@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: discoodle-transverse
+  name: database
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: database
+  template:
+    metadata:
+      labels:
+        app: database
+    spec:
+      containers:
+        - name: mariadb
+          image: mariabd:11.0-rc
+          ports:
+            - containerPort: 3306
+          env:
+            - name: MARIABD_DB
+              value: "mariabd"
+            - name: "MARIADB_ROOT_USER"
+              valueFrom:
+                secretKeyRef:
+                  name: discoodle-secret
+                  key: MARIADB_ROOT_USER
+            - name: "MARIADB_ROOT_PASSWORD"
+              valueFrom:
+                secretKeyRef:
+                  name: discoodle-secret
+                  key: MARIADB_ROOT_PASSWORD
+          volumeMounts:
+            - mountPath: /var/lib/mysql/data
+              subPath: data
+              name: mariadb-data
+      volumes:
+        - name: mariadb-data
+          persistentVolumeClaim:
+            claimName: mariadb-data-claim
