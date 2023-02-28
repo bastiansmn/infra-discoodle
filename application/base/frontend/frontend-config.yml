@@ -19,9 +19,9 @@ data:
     {
         client_max_body_size 1500M;
 
-        upstream backend
+        upstream discoodle-backend
         {
-            server backend:8080  max_conns=10;
+            server discoodle-backend:8080  max_conns=10;
         }
 
         server

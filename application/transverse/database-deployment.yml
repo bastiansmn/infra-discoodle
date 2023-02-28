@@ -17,12 +17,12 @@ spec:
     spec:
       containers:
         - name: mariadb
-          image: mariabd:11.0-rc
+          image: mariadb:11.0-rc
           ports:
             - containerPort: 3306
           env:
-            - name: MARIABD_DB
-              value: "mariabd"
+            - name: MARIADB_DATABASE
+              value: mariadb
             - name: "MARIADB_ROOT_USER"
               valueFrom:
                 secretKeyRef:

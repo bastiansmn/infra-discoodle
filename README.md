@@ -1,4 +1,4 @@
-Pour appliquer, avec env = sandbox|integration|recette
+Pour appliquer, avec env = sandbox|prod
 ```
-kustomize build application/overlay/<env> | kubectl apply -f -
+kubectl apply -k application/overlay/<env>
 ```

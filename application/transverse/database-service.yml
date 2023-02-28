@@ -2,9 +2,9 @@ apiVersion: v1
 kind: Service
 metadata:
   namespace: discoodle-transverse
-  name: mariabd # Sets service name
+  name: mariadb # Sets service name
   labels:
-    app: mariabd # Labels and Selectors
+    app: mariadb # Labels and Selectors
 spec:
   type: ClusterIP # Sets service type
   ports:

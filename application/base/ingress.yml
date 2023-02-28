@@ -10,7 +10,7 @@ metadata:
 
 spec:
   rules:
-    - host: discoodle.bastian-somon
+    - host: discoodle.bastian-somon.fr
       http:
         paths:
           - path: /api
@@ -30,7 +30,7 @@ spec:
   tls:
     - secretName: discoodle-account-key
       hosts:
-        - discoodle.bastian-somon
+        - discoodle.bastian-somon.fr
   defaultBackend:
     service:
       name: frontend
