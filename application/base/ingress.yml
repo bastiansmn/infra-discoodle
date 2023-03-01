@@ -5,21 +5,13 @@ metadata:
   name: discoodle-ingress
   annotations:
     kubernetes.io/ingress.class: "nginx"
+    kubernetes.io/tls-acme: "true"
     cert-manager.io/cluster-issuer: discoodle-issuer
-    nginx.ingress.kubernetes.io/rewrite-target: /
-
 spec:
   rules:
     - host: discoodle.bastian-somon.fr
       http:
         paths:
-          - path: /api
-            pathType: Prefix
-            backend:
-              service:
-                name: discoodle-backend
-                port:
-                  number: 8080
           - path: /
             pathType: Prefix
             backend:
@@ -27,12 +19,19 @@ spec:
                 name: discoodle-frontend
                 port:
                   number: 80
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: discoodle-backend
+                port:
+                  number: 8080
   tls:
     - secretName: discoodle-account-key
       hosts:
         - discoodle.bastian-somon.fr
   defaultBackend:
     service:
-      name: frontend
+      name: discoodle-frontend
       port:
         number: 80
