@@ -12,8 +12,3 @@ configMapGenerator:
     envs:
       - application.env
 
-patches:
-  - target:
-      kind: Ingress
-      name: ptf-ingress
-    path: ./patches/ingress.yml

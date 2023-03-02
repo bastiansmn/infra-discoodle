@@ -1,6 +1,6 @@
 - op: replace
   path: /spec/rules/0/host
-  value: sandbox.discoodle.bastian-somon.fr
+  value: sandbox-discoodle.bastian-somon.fr
 - op: replace
   path: /spec/tls/0/hosts/0
-  value: sandbox.discoodle.bastian-somon.fr
+  value: sandbox-discoodle.bastian-somon.fr
